@@ -1,0 +1,191 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The rocks module &#8212; PicturedRocks 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to PicturedRocks’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>PicturedRocks 0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>The rocks module</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to PicturedRocks’s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="module-rocks">
+<span id="the-rocks-module"></span><h1>The rocks module<a class="headerlink" href="#module-rocks" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="rocks.Rocks">
+<em class="property">class </em><code class="descclassname">rocks.</code><code class="descname">Rocks</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>genes=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>PicturedRocks Single-Cell RNA-seq Analysis Tool</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> – the gene expression matrix. We expect a numpy array of shape (N, P)
+containing data for N cells and P genes (note rows are cells and
+columns are genes.</li>
+<li><strong>y</strong> – cluster labels for N cells. We expect a numpy array of shape (N,
+1) or (N,) taking values 0, 1, 2, …, K - 1.</li>
+<li><strong>genes</strong> – (optional) names of genes. We expect an array of P strings,
+containing the names of various genes</li>
+<li><strong>verbose</strong> – verbosity level for debugging; defaults to 0.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For example, if you import your data using a <cite>pandas</cite> dataframe with P
+genes (columns) and N rows (cells) and a “Cluster” column as the last
+column, you can create a Rocks object as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">genes</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">rocks</span> <span class="o">=</span> <span class="n">Rocks</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">genes</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="rocks.Rocks.markers_mutualinfo">
+<code class="descname">markers_mutualinfo</code><span class="sig-paren">(</span><em>n</em>, <em>pool=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.markers_mutualinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute markers using mutual information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>n</strong> – the number of markers to select</li>
+<li><strong>pool</strong> – (optional) pool of genes to restrict marker selection
+search to</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocks.Rocks.markers_to_genes">
+<code class="descname">markers_to_genes</code><span class="sig-paren">(</span><em>markers</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.markers_to_genes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert gene indices to gene names</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>markers</strong> – a list of marker indices (numbers between 0 and P)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of gene names</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">to use this method, Rocks.genes must have been specified, either at
+initialization or manually via <code class="docutils literal"><span class="pre">object.genes</span> <span class="pre">=</span> <span class="pre">...</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocks.Rocks.normalize">
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>totalexpr='median'</em>, <em>log=True</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>totalexpr</strong> – the total expression to normalize every cell to. For
+example, if <cite>totalexpr =  1000</cite>, each cell is scaled so that its
+expression levels add to 1000. If <cite>totalexpr = “median”</cite> (default
+behavior), we set the total expression to the median total
+expression across all cells.</li>
+<li><strong>log</strong> – whether to log-transform the data (we always add 1 before
+taking logs).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="rocks.Rocks.pca">
+<code class="descname">pca</code><span class="sig-paren">(</span><em>dims=3</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.pca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform PCA on the data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dims</strong> – number of dimensions to consider in PCA</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="rocks.pcafigure">
+<code class="descclassname">rocks.</code><code class="descname">pcafigure</code><span class="sig-paren">(</span><em>celldata</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.pcafigure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a 3d PCA figure of Rocks data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>celldata</strong> – a Rocks object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to PicturedRocks’s documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Anna Gilbert, Alexander Vargo, Umang Varma.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
