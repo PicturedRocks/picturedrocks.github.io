@@ -1,0 +1,266 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The performance module &#8212; PicturedRocks 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The rocks module" href="rocks.html" /> 
+  </head>
+  <body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>PicturedRocks 0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>The performance module</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="rocks.html">The rocks module</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="the-performance-module">
+<h1>The performance module<a class="headerlink" href="#the-performance-module" title="Permalink to this headline">¶</a></h1>
+<p>This module can be used to evaluate feature selection methods via K-fold cross validation.</p>
+<span class="target" id="module-picturedrocks.performance"></span><dl class="class">
+<dt id="picturedrocks.performance.FoldTester">
+<em class="property">class </em><code class="descclassname">picturedrocks.performance.</code><code class="descname">FoldTester</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs K-fold Cross Validation for Marker Selection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – a Rocks object</td>
+</tr>
+</tbody>
+</table>
+<p><cite>FoldTester</cite> can be used to evaluate various marker selection algorithms. It
+can split the data in K folds, run marker selection algorithms on these
+folds, and classify data based on testing and training data.</p>
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.classify">
+<code class="descname">classify</code><span class="sig-paren">(</span><em>classifer</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.classify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classify each cell using training data from other folds</p>
+<p>For each fold, we project the data onto the markers selected for that
+fold, which we treat as test data. We also project the complement of the
+fold and treat that as training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>classifier</strong> – a classifier that trains with a training data set and
+predicts labels of test data. See <cite>NearestCentroidClassifier</cite> for an
+example.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.loadfolds">
+<code class="descname">loadfolds</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.loadfolds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load folds from a file</p>
+<p>The file can be one saved either by <cite>savefolds</cite> or
+<cite>savefoldsandmarkers</cite>. In the latter case, it will not load any markers.
+See <cite>loadfoldsandmarkers</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.loadfoldsandmarkers">
+<code class="descname">loadfoldsandmarkers</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.loadfoldsandmarkers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load folds and markers</p>
+<p>Loads a folds and markers file saved by <cite>savefoldsandmarkers</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.makefolds">
+<code class="descname">makefolds</code><span class="sig-paren">(</span><em>k=5</em>, <em>random=False</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.makefolds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes folds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>k</strong> – the value of K</li>
+<li><strong>random</strong> – if true, <cite>makefolds</cite> will make folds randomly. Otherwise,
+the folds are made in order (i.e., the first ceil(N/k) cells in the
+first fold, etc.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.savefolds">
+<code class="descname">savefolds</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.savefolds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save folds to a file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> – filename to save (typically with a <cite>.npz</cite> extension</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.savefoldsandmarkers">
+<code class="descname">savefoldsandmarkers</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.savefoldsandmarkers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save folds and markers for each fold</p>
+<p>This saves folds, and for each fold, the markers found by
+<cite>selectmarkers</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file</strong> – filename to save to (typically with a <cite>.npz</cite> extension)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.selectmarkers">
+<code class="descname">selectmarkers</code><span class="sig-paren">(</span><em>select_function</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.selectmarkers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a marker selection algorithm on each fold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>select_function</strong> – a function that takes in a Rocks object and
+outputs a list of markers, given by index (of the numpy array)</li>
+<li><strong>verbose</strong> – (optional) the level of verbosity to set in the Rocks
+objects created for each fold. Used for debugging.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="picturedrocks.performance.NearestCentroidClassifier">
+<em class="property">class </em><code class="descclassname">picturedrocks.performance.</code><code class="descname">NearestCentroidClassifier</code><a class="headerlink" href="#picturedrocks.performance.NearestCentroidClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nearest Centroid Classifier for Cross Validation</p>
+<p>Computes the centroid of each cluster label in the training data, then
+predicts the label of each test data point by finding the nearest centroid.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="picturedrocks.performance.PerformanceReport">
+<em class="property">class </em><code class="descclassname">picturedrocks.performance.</code><code class="descname">PerformanceReport</code><span class="sig-paren">(</span><em>y</em>, <em>yhat</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.PerformanceReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report actual vs predicted statistics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>y</strong> – actual cluster labels, (N, 1)-shaped numpy array</li>
+<li><strong>yhat</strong> – predicted cluster labels, (N, 1)-shaped numpy array</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="picturedrocks.performance.PerformanceReport.confusionmatrixfigure">
+<code class="descname">confusionmatrixfigure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.PerformanceReport.confusionmatrixfigure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and make a confusion matrix plotly figure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a plotly figure of a confusion matrix</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.PerformanceReport.getconfusionmatrix">
+<code class="descname">getconfusionmatrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.PerformanceReport.getconfusionmatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the confusion matrix for the latest run</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a numpy array of shape (K, K), with the [i, j] entry being the
+fraction of cells in cluster i that were predicted to be in cluster
+j</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.PerformanceReport.printscore">
+<code class="descname">printscore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.PerformanceReport.printscore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a message with the score</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.PerformanceReport.show">
+<code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.PerformanceReport.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a full report</p>
+<p>This uses <cite>iplot</cite>, so we assume this will only be run in a Jupyter
+notebook and that <cite>init_notebook_mode</cite> has already been run.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="picturedrocks.performance.PerformanceReport.wrong">
+<code class="descname">wrong</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.PerformanceReport.wrong" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of cells misclassified.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="rocks.html">The rocks module</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Anna Gilbert, Alexander Vargo, Umang Varma.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

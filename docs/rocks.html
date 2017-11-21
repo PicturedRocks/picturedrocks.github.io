@@ -24,7 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to PicturedRocks’s documentation!" href="index.html" /> 
+    <link rel="next" title="The performance module" href="performance.html" />
+    <link rel="prev" title="PicturedRocks–Single Cell RNA-seq Analysis Tool" href="index.html" /> 
   </head>
   <body>
       <div class="header" role="banner"><h1 class="heading"><a href="index.html">
@@ -34,20 +35,22 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">Welcome to PicturedRocks’s documentation!</a>
+        «&#160;&#160;<a href="index.html">PicturedRocks–Single Cell RNA-seq Analysis Tool</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="performance.html">The performance module</a>&#160;&#160;»
         </p>
 
       </div>
       <div class="content">
         
         
-  <div class="section" id="module-rocks">
-<span id="the-rocks-module"></span><h1>The rocks module<a class="headerlink" href="#module-rocks" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-picturedrocks.rocks">
+<span id="the-rocks-module"></span><h1>The rocks module<a class="headerlink" href="#module-picturedrocks.rocks" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="rocks.Rocks">
-<em class="property">class </em><code class="descclassname">rocks.</code><code class="descname">Rocks</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>genes=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks" title="Permalink to this definition">¶</a></dt>
+<dt id="picturedrocks.rocks.Rocks">
+<em class="property">class </em><code class="descclassname">picturedrocks.rocks.</code><code class="descname">Rocks</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>genes=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.Rocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>PicturedRocks Single-Cell RNA-seq Analysis Tool</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -77,8 +80,8 @@ column, you can create a Rocks object as follows:</p>
 </pre></div>
 </div>
 <dl class="method">
-<dt id="rocks.Rocks.markers_mutualinfo">
-<code class="descname">markers_mutualinfo</code><span class="sig-paren">(</span><em>n</em>, <em>pool=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.markers_mutualinfo" title="Permalink to this definition">¶</a></dt>
+<dt id="picturedrocks.rocks.Rocks.markers_mutualinfo">
+<code class="descname">markers_mutualinfo</code><span class="sig-paren">(</span><em>n</em>, <em>pool=None</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.Rocks.markers_mutualinfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute markers using mutual information</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -96,8 +99,8 @@ search to</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="rocks.Rocks.markers_to_genes">
-<code class="descname">markers_to_genes</code><span class="sig-paren">(</span><em>markers</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.markers_to_genes" title="Permalink to this definition">¶</a></dt>
+<dt id="picturedrocks.rocks.Rocks.markers_to_genes">
+<code class="descname">markers_to_genes</code><span class="sig-paren">(</span><em>markers</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.Rocks.markers_to_genes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert gene indices to gene names</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -117,8 +120,8 @@ initialization or manually via <code class="docutils literal"><span class="pre">
 </dd></dl>
 
 <dl class="method">
-<dt id="rocks.Rocks.normalize">
-<code class="descname">normalize</code><span class="sig-paren">(</span><em>totalexpr='median'</em>, <em>log=True</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.normalize" title="Permalink to this definition">¶</a></dt>
+<dt id="picturedrocks.rocks.Rocks.normalize">
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>totalexpr='median'</em>, <em>log=True</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.Rocks.normalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalize data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -140,8 +143,8 @@ taking logs).</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="rocks.Rocks.pca">
-<code class="descname">pca</code><span class="sig-paren">(</span><em>dims=3</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.Rocks.pca" title="Permalink to this definition">¶</a></dt>
+<dt id="picturedrocks.rocks.Rocks.pca">
+<code class="descname">pca</code><span class="sig-paren">(</span><em>dims=3</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.Rocks.pca" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform PCA on the data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -156,8 +159,8 @@ taking logs).</li>
 </dd></dl>
 
 <dl class="function">
-<dt id="rocks.pcafigure">
-<code class="descclassname">rocks.</code><code class="descname">pcafigure</code><span class="sig-paren">(</span><em>celldata</em><span class="sig-paren">)</span><a class="headerlink" href="#rocks.pcafigure" title="Permalink to this definition">¶</a></dt>
+<dt id="picturedrocks.rocks.pcafigure">
+<code class="descclassname">picturedrocks.rocks.</code><code class="descname">pcafigure</code><span class="sig-paren">(</span><em>celldata</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.pcafigure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a 3d PCA figure of Rocks data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -176,9 +179,11 @@ taking logs).</li>
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">Welcome to PicturedRocks’s documentation!</a>
+        «&#160;&#160;<a href="index.html">PicturedRocks–Single Cell RNA-seq Analysis Tool</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="performance.html">The performance module</a>&#160;&#160;»
         </p>
 
       </div>
