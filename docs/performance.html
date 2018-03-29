@@ -166,6 +166,27 @@ objects created for each fold. Used for debugging.</li>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="picturedrocks.performance.FoldTester.selectmarkersandclasify">
+<code class="descname">selectmarkersandclasify</code><span class="sig-paren">(</span><em>select_function</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.performance.FoldTester.selectmarkersandclasify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform an embedded feature selection algorithm on each fold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>select_function</strong> – a function that takes in a Rocks object as training
+data and and a test dataset. The function should output a 2-tuple:
+( [a list of markers indices], yhat)</li>
+<li><strong>verbose</strong> – (optional) the level of verbosity to set in the Rocks
+objects created for each fold. Used for debugging.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">

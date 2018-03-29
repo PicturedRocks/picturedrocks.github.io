@@ -159,14 +159,98 @@ taking logs).</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="picturedrocks.rocks.genericplot">
+<code class="descclassname">picturedrocks.rocks.</code><code class="descname">genericplot</code><span class="sig-paren">(</span><em>celldata</em>, <em>coords</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.genericplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a figure for some embedding of Rocks data</p>
+<p>This function supports both 2D and 3D plots. This may be used to plot data
+for any embedding (e.g., PCA or t-SNE). For example usage, see code for
+<cite>pcafigure</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>celldata</strong> – a Rocks object</li>
+<li><strong>coords</strong> – (N, 2) or (N, 3) shaped coordinates of the embedded data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="picturedrocks.rocks.genericwrongplot">
+<code class="descclassname">picturedrocks.rocks.</code><code class="descname">genericwrongplot</code><span class="sig-paren">(</span><em>celldata</em>, <em>coords</em>, <em>yhat</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.genericwrongplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot figure with incorrectly classified points highlighted</p>
+<p>This can be used with any 2D or 3D embedding (e.g., PCA or t-SNE). For
+example code, see <cite>pcawrongplot</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>celldata</strong> – Rocks object</li>
+<li><strong>coords</strong> – a (N, 2) or (N, 3) shaped array with coordinates to plot</li>
+<li><strong>yhat</strong> – (N, 1) shaped array of predicted/guessed y values</li>
+<li><strong>labels</strong> – (optional) list of axis titles</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="picturedrocks.rocks.pcafigure">
 <code class="descclassname">picturedrocks.rocks.</code><code class="descname">pcafigure</code><span class="sig-paren">(</span><em>celldata</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.pcafigure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a 3d PCA figure of Rocks data</p>
+<dd><p>Make a 3D PCA figure for a Rocks object</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>celldata</strong> – a Rocks object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="picturedrocks.rocks.pcawrongplot">
+<code class="descclassname">picturedrocks.rocks.</code><code class="descname">pcawrongplot</code><span class="sig-paren">(</span><em>celldata</em>, <em>yhat</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.pcawrongplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a 3D PCA figure with incorrectly classified points highlighted</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>celldata</strong> – a Rocks object</li>
+<li><strong>yhat</strong> – computed (guessed) y vector</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="picturedrocks.rocks.plotgeneheat">
+<code class="descclassname">picturedrocks.rocks.</code><code class="descname">plotgeneheat</code><span class="sig-paren">(</span><em>celldata</em>, <em>coords</em>, <em>genes</em><span class="sig-paren">)</span><a class="headerlink" href="#picturedrocks.rocks.plotgeneheat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate gene heat plot for some embedding of Rocks data</p>
+<p>This generates a figure with multiple dropdown options. The first option is
+“Clust” for a plot similar to <cite>genericplot</cite>, and the remaining dropdown
+options correspond to genes specified in <cite>genes</cite>. When <cite>celldata.genes</cite> is
+defined, these drop downs are labeled with the gene names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>celldata</strong> – a Rocks object</li>
+<li><strong>coords</strong> – (N, 2) or (N, 3) shaped coordinates of the embedded data</li>
+<li><strong>genes</strong> – list of gene indices</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
